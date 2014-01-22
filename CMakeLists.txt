@@ -5,6 +5,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   actionlib
   message_generation
+  rosconsole
   nav_msgs
   move_base_msgs
   geometry_msgs
@@ -34,7 +35,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES nav_goal_manager
-  CATKIN_DEPENDS roscpp actionlib nav_msgs move_base_msgs geometry_msgs
+  CATKIN_DEPENDS roscpp rosconsole actionlib nav_msgs move_base_msgs geometry_msgs
 #  DEPENDS system_lib
 )
 
