@@ -7,7 +7,7 @@ namespace nav_goal_manager {
     ROS_INFO("To register subcribers");
     goal_sub_nh = ros::NodeHandle("nav_manager");
     goal_sub_ = goal_sub_nh.subscribe<geometry_msgs::PoseStamped>("goal", 1, boost::bind(&NavGoalManager::goalSimple, this, _1));
-    cancel_sub_ = goal_sub_nh.subscribe<geometry_msgs::PoseStamped>("cancel", 1, boost::bind(&NavGoalManager::cancelSimple, this, _1));
+    cancel_sub_ = goal_sub_nh.subscribe<std_msgs::String>("cancel", 1, boost::bind(&NavGoalManager::cancelSimple, this, _1));
 
     ROS_INFO("To start action lib");
     // Connect to the move_base action server
@@ -33,7 +33,7 @@ namespace nav_goal_manager {
                                     const move_base_msgs::MoveBaseResultConstPtr &result) {
   }
 
-  void NavGoalManager::cancelSimple(const geometry_msgs::PoseStamped::ConstPtr& goal) {
+  void NavGoalManager::cancelSimple(const std_msgs::String::ConstPtr& goal) {
     ROS_INFO_NAMED("nav goal manager","Cancel Callback. Resending to move_base.");
     // We should cancel previous goals here.
     actionClient->cancelAllGoals();

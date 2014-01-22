@@ -7,6 +7,7 @@
 #include <actionlib/client/simple_client_goal_state.h>
 #include <move_base_msgs/MoveBaseAction.h>
 #include <geometry_msgs/PoseStamped.h>
+#include <std_msgs/String.h>
 
 namespace nav_goal_manager {
 
@@ -27,7 +28,7 @@ namespace nav_goal_manager {
       /**
        * @brief: Handler for cancelation signals sent to the basic interface.
        */
-      void cancelSimple(const geometry_msgs::PoseStamped::ConstPtr& goal);
+      void cancelSimple(const std_msgs::String::ConstPtr& goal);
 
      private:
       ActionClient* actionClient;
